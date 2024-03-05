@@ -2,7 +2,7 @@
 draft: false 
 date: 2024-03-04
 categories:
-  - word1
+  - tech
 comments: true
 authors: [saymealoud]
 
