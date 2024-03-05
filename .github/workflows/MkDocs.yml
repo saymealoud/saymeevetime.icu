@@ -1,24 +1,20 @@
-name: Deploy MkDocs with Python dependencies
-
-on:
-  push:
-    branches: [ main ]
-
 jobs:
+  # Single deploy job no building
   deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          python-version: '3.x'
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-      - name: Build MkDocs
-        run: mkdocs build
-      - name: Deploy MkDocs to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          # upload entire directory
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
