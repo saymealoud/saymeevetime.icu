@@ -1,3 +1,12 @@
+---
+draft: false 
+date: 2024-01-31 
+categories:
+  - word1
+comments: true
+authors: [saymealoud]
+
+---
 
 
 
