@@ -1,6 +1,6 @@
 ---
 draft: false 
-date: 2024-03-05
+date: 2024-03-04
 categories:
   - word1
 comments: true
