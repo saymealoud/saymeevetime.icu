@@ -469,6 +469,958 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2024-03-04 00:00:00">March 4, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">word1</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="xxx-job"><a class="toclink" href="../../xxx-job/">Xxx job</a></h2>
+<h4 id="xxl-jobspringboot"><a class="toclink" href="../../xxx-job/#xxl-jobspringboot">第一章 新版分布式调度XXL-Job+SpringBoot课程介绍</a></h4>
+<h5 id="1-xxl-jobspringboot"><a class="toclink" href="../../xxx-job/#1-xxl-jobspringboot">第1集 新版分布式调度XXL-Job+SpringBoot实战专题课程介绍</a></h5>
+<p><strong>简介：分布式调度XXL-Job介绍-适合人员和学后水平</strong></p>
+<ul>
+<li>课程介绍</li>
+<li>
+<p>本套课程 是<strong>全新录制，</strong>从0到1讲解新版分布式调度XXL-Job核心基础+<strong>高级知识点。</strong></p>
+</li>
+<li>
+<p>不止讲解新版XXL-Job核心知识 ，横向对比多个业界解决方案，源码部署分布式调度XXL-Job，讲解控制台各个模块知识点，使用SpringBoot整合XXL-Job实战，多节点执行器和调度策略实战，命令行参数传递和日志配置</p>
+</li>
+<li>
+<p>【高级部分】XXL-Job集群部署和架构链路讲解，海量任务调度解决方案分片广播讲解和实战</p>
+</li>
+<li>
+<p>为什么要学习分布式调度XXL-Job</p>
+</li>
+<li>XXL-JOB是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展</li>
+<li>多数互联网公司里面用的技术，周期性业务 如<strong>消息推送、支付对账、数据统计</strong>等，离不开分布式调度</li>
+<li>在多数互联网公司中，分布式调度XXL-Job占有率很高，是近几年大量流行</li>
+<li>可以作为公司内部培训技术分享必备知识，超多案例+实战等</li>
+<li>
+<p>有谁在用</p>
+<ul>
+<li>众多互联网大厂，包括并不限于虎牙、京东、荔枝FM、平安、360、网易 等 一二线大厂</li>
+<li>https://www.xuxueli.com/</li>
+</ul>
+</li>
+<li>
+<p>课程技术栈和测试环境说明</p>
+</li>
+<li>
+<p>JDk8或者JDK11 + SpringBoot + 源码部署 + IDEA+XXLJob2.3</p>
+</li>
+<li>
+<p>技术不断更新，版本如何选择 </p>
+<ul>
+<li>中间件使用这块，不建议做第一个吃螃蟹的人</li>
+<li>不同中间件，厂商不一样，不一定及时更新</li>
+</ul>
+</li>
+<li>
+<p>学后水平</p>
+</li>
+<li>
+<p>掌握新版XXL-Job核心知识 ，横向对比多个业界解决方案</p>
+</li>
+<li>源码部署XXL-Job和控制台菜单模块功能点</li>
+<li>掌握使用SpringBoot整合XXL-Job实战</li>
+<li>掌握多节点执行器和调度策略实战，命令行参数传递和日志配置</li>
+<li>【高级】XXL-Job集群部署和架构链路讲解</li>
+<li>【高级】海量任务调度解决方案分片广播讲解和实战</li>
+</ul>
+<h5 id="2-xxl-jobspringboot"><a class="toclink" href="../../xxx-job/#2-xxl-jobspringboot">第2集 新版分布式调度XXL-Job+SpringBoot实战大纲速览</a></h5>
+<p><strong>简介：新版分布式调度XXL-Job+SpringBoot实战大纲速览</strong></p>
+<ul>
+<li>课程学前基础</li>
+<li>有Linux+SpringBoot就行，不会的话我们有专题课程学习,联系客服小姐姐即可</li>
+<li>
+<p>框架整合这块：采用SpringBoot框架（采用其他语言或框架也行）</p>
+</li>
+<li>
+<p>目录大纲浏览</p>
+</li>
+</ul>
+<h4 id="xxl-job"><a class="toclink" href="../../xxx-job/#xxl-job">第二章 急速认知分布式调度XXL-Job框架和源码安装</a></h4>
+<h5 id="1"><a class="toclink" href="../../xxx-job/#1">第1集 你知道多少种定时任务的实现方式</a></h5>
+<p><strong>简介：你知道多少种定时任务的实现方式</strong></p>
+<ul>
+<li>需求分析</li>
+<li>在平常的业务场景当中，经常有一些场景需要使用到定时任务</li>
+<li>比如说在某个时间点会发送优惠券、发送短信等等的一些业务操作，难道这些操作都需要人工来进行干预吗？</li>
+<li>
+<p>比如一些支付系统，需要在每天的凌晨1点来进行对前一天的清算，难道每次都要一个人来负责这个业务吗？</p>
+</li>
+<li>
+<p>定时任务</p>
+</li>
+<li>通过时间表达式这一方式来进行任务调度的被称为定时任务</li>
+<li>
+<p>分类</p>
+<ul>
+<li>单机定时任务</li>
+<li>单机的容易实现，但应用于集群环境做分布式部署，就会带来重复执行</li>
+<li>解决方案有很多比如加锁、数据库等，但是增加了很多非业务逻辑</li>
+<li>分布式调度（分布式定时任务）</li>
+<li>把需要处理的计划任务放入到统一的平台，实现集群管理调度与分布式部署的定时任务 叫做分布式定时任务</li>
+<li>支持集群部署、高可用、并行调度、分片处理等</li>
+</ul>
+</li>
+<li>
+<p>常见定时任务</p>
+</li>
+<li>单机：Java自带的java.util.Timer类配置比较麻烦，时间延后问题</li>
+<li>单机：ScheduledExecutorService<ul>
+<li>是基于线程池来进行设计的定时任务类，在这里每个调度的任务都会分配到线程池里的一个线程去执行该任务，并发执行，互不影响</li>
+</ul>
+</li>
+<li>
+<p>单机：SpringBoot框架自带</p>
+<ul>
+<li>SpringBoot使用注解方式开启定时任务</li>
+<li>启动类里面 @EnableScheduling开启定时任务，自动扫描</li>
+<li>定时任务业务类 加注解 @Component被容器扫描</li>
+<li>定时执行的方法加上注解 @Scheduled(fixedRate=2000) 定期执行一次</li>
+</ul>
+</li>
+<li>
+<p>为什么需要任务调度平台</p>
+</li>
+<li>
+<p>因为在传统的Java当中，传统的定时任务实现方案，像上述的Timer、Quartz等</p>
+</li>
+<li>
+<p>它们都有不少缺点</p>
+<ul>
+<li>不支持集群、不支持统计、没有管理的平台、也没有报警、监控等等</li>
+<li>在分布式架构当中，有一些场景是需要用到分布式的任务调度的，在同一个服务器中的多个实例任务之间存在着互斥，需要进行统一的调度，所以任务调度需要支持高可用、监控、故障告警等一系列措施。</li>
+<li>需要统一管理和追踪各个的服务节点之间任务调度的结果，并保存记录任务信息等等</li>
+</ul>
+</li>
+<li>
+<p>如何解决上述问题？</p>
+<ul>
+<li>分布式调度平台</li>
+</ul>
+</li>
+</ul>
+<h5 id="2"><a class="toclink" href="../../xxx-job/#2">第2集 常见的分布式调度平台快速认知</a></h5>
+<p><strong>简介：常见的分布式调度平台快速认知</strong></p>
+<ul>
+<li>
+<p>常见分布式定时任务</p>
+</li>
+<li>
+<p>Quartz</p>
+<ul>
+<li>Quartz关注点在于定时任务而并非是数据，并没有一套根据数据化处理而定的流程</li>
+<li>虽然可以实现数据库作业的高可用，但是缺少了分布式的并行调度功能，相对弱点</li>
+<li>不支持任务分片、没UI界面管理，并行调度、失败策略等也缺少</li>
+</ul>
+</li>
+<li>
+<p>TBSchedule</p>
+<ul>
+<li>这个是阿里早期开源的分布式任务调度系统，使用的是timer而不是线程池执行任务调度，使用timer在处理异常的时候是有缺陷的，但TBSchedule的作业类型比较单一，文档也缺失得比较严重</li>
+<li>目前阿里内部使用的是ScheduleX</li>
+<li>阿里云也有商业化版本: https://help.aliyun.com/product/147760.html</li>
+</ul>
+<p><img alt="image-20220519175053475" src="img/image-20220519175053475.png" /></p>
+</li>
+<li>
+<p>Elastic-job</p>
+<ul>
+<li>当当开发的分布式任务调度系统，功能强大，采用的是zookeeper实现分布式协调，具有高可用与分片。</li>
+<li>2020年6月，ElasticJob的四个子项目已经正式迁入Apache仓库</li>
+<li>由 2 个相互独立的子项目 ElasticJob-Lite 和 ElasticJob-Cloud 组成</li>
+<li>ElasticJob-Lite 定位为轻量级无中心化解决方案，使用jar的形式提供分布式任务的协调服务；</li>
+<li>ElasticJob-Cloud 使用 Mesos 的解决方案，额外提供资源治理、应用分发以及进程隔离等服务</li>
+<li>地址：https://shardingsphere.apache.org/elasticjob/index_zh.html</li>
+</ul>
+</li>
+<li>
+<p>XXL-JOB</p>
+<ul>
+<li>大众点评的员工徐雪里在15年发布的分布式任务调度平台，是轻量级的分布式任务调度框架，目标是开发迅速、简单、清理、易扩展; 老版本是依赖quartz的定时任务触发，在v2.1.0版本开始 移除quartz依赖</li>
+<li>地址：https://www.xuxueli.com/xxl-job/</li>
+</ul>
+</li>
+<li>
+<p>常规对比图</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>XXL-JOB</th>
+<th>elastic-job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并行调度</td>
+<td>调度系统多线程并行</td>
+<td>任务分片的方式并行</td>
+</tr>
+<tr>
+<td>弹性扩容</td>
+<td>使用Quartz基于数据库分布式功能</td>
+<td>通过zookeeper保证</td>
+</tr>
+<tr>
+<td>高可用</td>
+<td>通过DB锁保证</td>
+<td>通过zookeeper保证</td>
+</tr>
+<tr>
+<td>阻塞策略</td>
+<td>单机串行/丢弃后续的调度/覆盖之前的调度</td>
+<td>执行超过zookeeper的session timeout时间的话，会被清除，重新进行分片</td>
+</tr>
+<tr>
+<td>动态分片策略</td>
+<td>以执行器为维度进行分片、支持动态的扩容</td>
+<td>平均分配/作业名hash分配/自定义策略</td>
+</tr>
+<tr>
+<td>失败处理策略</td>
+<td>失败告警/失败重试</td>
+<td>执行完毕后主动获取未分配分片任务 服务器下线后主动寻找可以用的服务器执行任务</td>
+</tr>
+<tr>
+<td>监控</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>日志</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>如何选择哪一个分布式任务调度平台</li>
+<li>XXL-Job和Elastic-Job都具有广泛的用户基础和完善的技术文档，都可以满足定时任务的基本功能需求</li>
+<li>xxl-job侧重在业务实现简单和管理方便，容易学习，失败与路由策略丰富, 推荐使用在用户基数相对较少，服务器的数量在一定的范围内的场景下使用</li>
+<li>elastic-job关注的点在数据，添加了弹性扩容和数据分片的思路，更方便利用分布式服务器的资源, 但是学习难度较大，推荐在数据量庞大，服务器数量多的时候使用</li>
+</ul>
+<h5 id="3-xxl-job"><a class="toclink" href="../../xxx-job/#3-xxl-job">第3集 带你走近分布式调度XXL-Job核心特性</a></h5>
+<p><strong>简介：带你走近分布式调度XXL-Job核心特性</strong></p>
+<ul>
+<li>
+<p>什么是XXL-Job</p>
+</li>
+<li>
+<p>XXL-JOB</p>
+<ul>
+<li>大众点评的员工徐雪里在15年发布的分布式任务调度平台，是轻量级的分布式任务调度框架，目标是开发迅速、简单、清理、易扩展; 老版本是依赖quartz的定时任务触发，在v2.1.0版本开始 移除quartz依赖</li>
+<li>官网地址：https://www.xuxueli.com/xxl-job/</li>
+<li>GitHub地址：https://github.com/xuxueli/xxl-job/</li>
+</ul>
+</li>
+<li>
+<p>xxl-job的设计思想</p>
+<ul>
+<li>将调度行为抽象形成“调度中心”公共平台，而平台自身并不承担业务逻辑，“调度中心”负责发起调度请求。</li>
+<li>将任务抽象成分散的JobHandler，交由“执行器”统一管理</li>
+<li>“执行器”负责接收调度请求并执行对应的JobHandler中业务逻辑。</li>
+<li>因此，“调度”和“任务”两部分可以相互解耦，提高系统整体稳定性和扩展性</li>
+</ul>
+</li>
+<li>
+<p>架构图(图片来源是xxl-job官网)</p>
+</li>
+<li>
+<p>调度中心</p>
+<ul>
+<li>负责管理调度的信息，按照调度的配置来发出调度请求</li>
+<li>支持可视化、简单的动态管理调度信息，包括新建、删除、更新等，这些操作都会实时生效，同时也支持监控调度结果以及执行日志。</li>
+</ul>
+</li>
+<li>
+<p>执行器</p>
+<ul>
+<li>负责接收请求并且执行任务的逻辑。任务模块专注于任务的执行操作等等，使得开发和维护更加的简单与高效</li>
+</ul>
+</li>
+<li>
+<p>XXL-Job具有哪些特性</p>
+</li>
+<li>调度中心HA（中心式）：调度采用了中心式进行设计，“调度中心”支持集群部署，可保证调度中心HA</li>
+<li>执行器HA（分布式）：任务分布式的执行，任务执行器支持集群部署，可保证任务执行HA</li>
+<li>触发策略：有Cron触发、固定间隔触发、固定延时触发、API事件触发、人工触发、父子任务触发</li>
+<li>路由策略：执行器在集群部署的时候提供了丰富的路由策略，如：第一个、最后一个、轮询、随机、一致性HASH、最不经常使用LFU、最久未使用LRU、故障转移等等</li>
+<li>故障转移：如果执行器集群的一台机器发生故障，会自动切换到一台正常的执行器发送任务调度</li>
+<li>Rolling实时日志的监控：支持rolling方式查看输入的完整执行日志</li>
+<li>脚本任务：支持GLUE模式开发和运行脚本任务，包括Shell、python、node.js、php等等类型脚本</li>
+</ul>
+<h5 id="4-xxl-job"><a class="toclink" href="../../xxx-job/#4-xxl-job">第4集 分布式调度XXl-Job源码部署和数据库表建立《上》</a></h5>
+<p><strong>简介：新版分布式调度XXl-Job源码部署和数据库表建立《上》</strong></p>
+<ul>
+<li>
+<p>下载地址（版本和课程保证一致）</p>
+</li>
+<li>
+<p>https://github.com/xuxueli/xxl-job/releases</p>
+</li>
+<li>
+<p>版本V-2.3</p>
+</li>
+<li>
+<p>源码（本章本集资料）</p>
+</li>
+<li>
+<p>环境：IDEA旗舰版+Maven+JDK8或JDK11+Mysql5.7（本身就是SpringBoot项目）</p>
+</li>
+<li>
+<p>目录介绍</p>
+<ul>
+<li>doc：xxl-job的文档资料，包括了数据库的脚本（后面要用到）</li>
+<li>xxl-job-core：公共jar包依赖</li>
+<li>xxl-job-admin：调度中心，项目源码，是Springboot项目，可以直接启动</li>
+<li>xxl-job-executor-samples：执行器，是Sample实例项目，里面的Springboot工程可以直接启动，也可以在该项目的基础上进行开发，也可以将现有的项目改造成为执行器项目</li>
+</ul>
+</li>
+<li>
+<p>数据库（本章本集资料或者源码doc/db目录下）</p>
+</li>
+<li>
+<p>xxl_job的数据库里有如下几个表</p>
+<ul>
+<li>xxl_job_group：执行器信息表，用于维护任务执行器的信息</li>
+<li>xxl_job_info：调度扩展信息表，主要是用于保存xxl-job的调度任务的扩展信息，比如说像任务分组、任务名、机器的地址等等</li>
+<li>xxl_job_lock：任务调度锁表</li>
+<li>xxl_job_log：日志表，主要是用在保存xxl-job任务调度历史信息，像调度结果、执行结果、调度入参等等</li>
+<li>xxl_job_log_report：日志报表，会存储xxl-job任务调度的日志报表，会在调度中心里的报表功能里使用到</li>
+<li>xxl_job_logglue：任务的GLUE日志，用于保存GLUE日志的更新历史变化，支持GLUE版本的回溯功能</li>
+<li>xxl_job_registry：执行器的注册表，用在维护在线的执行器与调度中心的地址信息</li>
+<li>xxl_job_user：系统的用户表</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-xxl-job"><a class="toclink" href="../../xxx-job/#5-xxl-job">第5集 新版分布式调度XXl-Job源码部署和数据库表建立《下》</a></h5>
+<p><strong>简介：新版分布式调度XXl-Job源码部署和数据库表建立《下》</strong></p>
+<ul>
+<li>
+<p>部署XXL-Job步骤</p>
+</li>
+<li>
+<p>xxl-job-admin目录配置文件 application.properties</p>
+<ul>
+<li>配置数据库连接</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>### xxl-job, datasource
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>spring.datasource.username=root
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>spring.datasource.password=xdclass.net
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+</span></code></pre></div>
+<ul>
+<li>配置 xxl.job.accessToken（后续要配置客户端接入配置token）</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>xxl.job.accessToken=xdclass.net
+</span></code></pre></div>
+</li>
+<li>
+<p>构建编译：mvn install</p>
+</li>
+<li>
+<p>启动项目</p>
+</li>
+<li>
+<p>注意</p>
+</li>
+<li>
+<p>网络部署属于CS架构，需要双方网络互通</p>
+</li>
+<li>
+<p>Mac电脑启动报错</p>
+</li>
+<li>
+<p>访问地址</p>
+</li>
+<li>地址：ip:8080/xxl-job-admin</li>
+<li>默认账号密码：admin / 123456</li>
+</ul>
+<h5 id="6-xxl-job-ui"><a class="toclink" href="../../xxx-job/#6-xxl-job-ui">第6集 分布式调度XXL-Job UI菜单模块介绍</a></h5>
+<p><strong>简介：分布式调度XXL-Job UI界面介绍</strong></p>
+<ul>
+<li>运行报表</li>
+<li>
+<p>以图形化来展示了整体的任务执行情况</p>
+<ul>
+<li>任务数量：能够看到调度中心运行的任务数量</li>
+<li>调度次数：调度中心所触发的调度次数</li>
+<li>执行器数量：在整个调度中心中，在线的执行器数量有多少</li>
+</ul>
+</li>
+<li>
+<p>任务管理（配置执行任务）</p>
+</li>
+<li>示例执行器：所用到的执行器</li>
+<li>任务描述：概述该任务是做什么的</li>
+<li>路由策略：<ul>
+<li>第一个：选择第一个机器</li>
+<li>最后一个：选择最后一个机器</li>
+<li>轮询：依次选择执行</li>
+<li>随机：随机选择在线的机器</li>
+<li>一致性HASH：每个任务按照Hash算法固定选择某一台机器，并且所有的任务均匀散列在不同的机器上</li>
+<li>最不经常使用：使用频率最低的机器优先被使用</li>
+<li>最近最久未使用：最久未使用的机器优先被选举</li>
+<li>故障转移：按照顺序依次进行心跳检测，第一个心跳检测成功的机器选定为目标的执行器并且会发起任务调度</li>
+<li>忙碌转移：按照顺序来依次进行空闲检测，第一个空闲检测成功的机器会被选定为目标群机器，并且会发起任务调度</li>
+<li>分片广播：广播触发对于集群中的所有机器执行任务，同时会系统会自动传递分片的参数</li>
+</ul>
+</li>
+<li>Cron：执行规则 </li>
+<li>调度过期策略：调度中心错过调度时间的补偿处理策略，包括：忽略、立即补偿触发一次等</li>
+<li>JobHandler：定义执行器的名字</li>
+<li>阻塞处理策略：<ul>
+<li>单机串行：新的调度任务在进入到执行器之后，该调度任务进入FIFO队列，并以串行的方式去进行</li>
+<li>丢弃后续调度：新的调度任务在进入到执行器之后，如果存在相同的且正在运行的调度任务，本次的调度任务请求就会被丢弃掉，并且标记为失败</li>
+<li>覆盖之前的调度：新的调度任务在进入到执行器之后，如果存在相同的且正在运行的调度任务，就会终止掉当前正在运行的调度任务，并且清空队列，运行新的调度任务。</li>
+</ul>
+</li>
+<li>子任务ID：输入子任务的任务id，可填写多个</li>
+<li>任务超时时间：添加任务超时的时候，单位s，设置时间大于0的时候就会生效</li>
+<li>失败重试次数：设置失败重试的次数，设置时间大于0的时候就会生效</li>
+<li>负责人：填写该任务调度的负责人</li>
+<li>
+<p>报警邮件：出现报警，则发送邮件</p>
+</li>
+<li>
+<p>调度日志</p>
+</li>
+<li>这里是查看调度的日志，根据日志来查看任务具体的执行情况是怎样的</li>
+<li>执行器管理</li>
+<li>这里是配置执行器，等待执行器启动的时候都会被调度中心监听加入到地址列表</li>
+<li>用户管理</li>
+<li>可以对用户的一些操作</li>
+</ul>
+<h4 id="springbootxxl-job"><a class="toclink" href="../../xxx-job/#springbootxxl-job">第三章 新版SpringBoot整合XXL-Job分布式调度任务实操</a></h4>
+<h5 id="1-springbootxxl-job"><a class="toclink" href="../../xxx-job/#1-springbootxxl-job">第1集 新版Springboot整合XXL-Job项目搭建</a></h5>
+<p><strong>简介：新版Springboot整合XXL-Job项目搭建</strong></p>
+<ul>
+<li>新版Springboot介绍</li>
+<li>GitHub地址：https://github.com/spring-projects/spring-boot</li>
+<li>官方文档：https://spring.io/guides/gs/spring-boot/</li>
+<li>视频地址：https://item.taobao.com/item.htm?id=618384570391</li>
+<li>在线创建：https://start.spring.io/</li>
+<li>相关的软件环境</li>
+<li>jdk8/11+maven3.5</li>
+<li>编辑器IDEA</li>
+<li>创建一个Springboot项目</li>
+<li>
+<p>导入本集课程代码即可，pom版本保持一致</p>
+</li>
+<li>
+<p>添加XXL-Job依赖</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>         &lt;dependency&gt;
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>            &lt;groupId&gt;com.xuxueli&lt;/groupId&gt;
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>            &lt;artifactId&gt;xxl-job-core&lt;/artifactId&gt;
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>            &lt;version&gt;2.3.0&lt;/version&gt;
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>        &lt;/dependency&gt;
+</span></code></pre></div>
+<ul>
+<li>
+<p>编写简单的任务调度例子</p>
+</li>
+<li>
+<p>新增logback.xml</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>&lt;configuration debug=&quot;false&quot; scan=&quot;true&quot; scanPeriod=&quot;1 seconds&quot;&gt;
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    &lt;contextName&gt;logback&lt;/contextName&gt;
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    &lt;property name=&quot;log.path&quot; value=&quot;./data/logs/xxl-job/app.log&quot;/&gt;
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    &lt;appender name=&quot;console&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>        &lt;encoder&gt;
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>            &lt;pattern&gt;%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt;
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>        &lt;/encoder&gt;
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    &lt;/appender&gt;
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>    &lt;appender name=&quot;file&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>        &lt;file&gt;${log.path}&lt;/file&gt;
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
+</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>            &lt;fileNamePattern&gt;${log.path}.%d{yyyy-MM-dd}.zip&lt;/fileNamePattern&gt;
+</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>        &lt;/rollingPolicy&gt;
+</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>        &lt;encoder&gt;
+</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>            &lt;pattern&gt;%date %level [%thread] %logger{36} [%file : %line] %msg%n
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>            &lt;/pattern&gt;
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a>        &lt;/encoder&gt;
+</span><span id="__span-33-22"><a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a>    &lt;/appender&gt;
+</span><span id="__span-33-23"><a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a>
+</span><span id="__span-33-24"><a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a>    &lt;root level=&quot;info&quot;&gt;
+</span><span id="__span-33-25"><a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a>        &lt;appender-ref ref=&quot;console&quot;/&gt;
+</span><span id="__span-33-26"><a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>        &lt;appender-ref ref=&quot;file&quot;/&gt;
+</span><span id="__span-33-27"><a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a>    &lt;/root&gt;
+</span><span id="__span-33-28"><a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>
+</span><span id="__span-33-29"><a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a>&lt;/configuration&gt;
+</span></code></pre></div>
+<ul>
+<li>配置文件</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>#----------xxl-job配置--------------
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>logging.config=classpath:logback.xml
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>#调度中心部署地址,多个配置逗号分隔 &quot;http://address01,http://address02&quot;
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>#执行器token，非空时启用 xxl-job, access token 
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>xxl.job.accessToken=xdclass.net
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a># 执行器app名称,和控制台那边配置一样的名称，不然注册不上去
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>xxl.job.executor.appname=xdclass-shop
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a># [选填]执行器注册：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>#从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>xxl.job.executor.address=
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>#[选填]执行器IP ：默认为空表示自动获取IP（即springboot容器的ip和端口，可以自动获取，也可以指定），多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 &quot;执行器注册&quot; 和 &quot;调度中心请求并触发任务&quot;，
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>xxl.job.executor.ip=
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a># [选填]执行器端口号：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>xxl.job.executor.port=9999
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>#执行器日志文件存储路径，需要对该路径拥有读写权限；为空则使用默认路径
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>xxl.job.executor.logpath=./data/logs/xxl-job/executor
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>#执行器日志保存天数
+</span><span id="__span-34-26"><a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a>xxl.job.executor.logretentiondays=30
+</span></code></pre></div>
+<ul>
+<li>XxlJobConfig</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>@Configuration
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>public class XxlJobConfig {
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    private Logger log = LoggerFactory.getLogger(XxlJobConfig.class);
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    @Value(&quot;${xxl.job.admin.addresses}&quot;)
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>    private String adminAddresses;
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    @Value(&quot;${xxl.job.executor.appname}&quot;)
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    private String appName;
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>    @Value(&quot;${xxl.job.executor.ip}&quot;)
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>    private String ip;
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>    @Value(&quot;${xxl.job.executor.port}&quot;)
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>    private int port;
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>    @Value(&quot;${xxl.job.accessToken}&quot;)
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>    private String accessToken;
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>    @Value(&quot;${xxl.job.executor.logpath}&quot;)
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>    private String logPath;
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a>
+</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>    @Value(&quot;${xxl.job.executor.logretentiondays}&quot;)
+</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a>    private int logRetentionDays;
+</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a>
+</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>    //旧版的有bug
+</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a>    //@Bean(initMethod = &quot;start&quot;, destroyMethod = &quot;destroy&quot;)
+</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a>    @Bean
+</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a>    public XxlJobSpringExecutor xxlJobExecutor() {
+</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a>        log.info(&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; xxl-job config init.&quot;);
+</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a>        XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
+</span><span id="__span-35-32"><a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a>        xxlJobSpringExecutor.setAdminAddresses(adminAddresses);
+</span><span id="__span-35-33"><a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a>        xxlJobSpringExecutor.setAppname(appName);
+</span><span id="__span-35-34"><a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a>        xxlJobSpringExecutor.setIp(ip);
+</span><span id="__span-35-35"><a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a>        xxlJobSpringExecutor.setPort(port);
+</span><span id="__span-35-36"><a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a>        xxlJobSpringExecutor.setAccessToken(accessToken);
+</span><span id="__span-35-37"><a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a>        xxlJobSpringExecutor.setLogPath(logPath);
+</span><span id="__span-35-38"><a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a>        xxlJobSpringExecutor.setLogRetentionDays(logRetentionDays);
+</span><span id="__span-35-39"><a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a>
+</span><span id="__span-35-40"><a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a>        return xxlJobSpringExecutor;
+</span><span id="__span-35-41"><a id="__codelineno-35-41" name="__codelineno-35-41" href="#__codelineno-35-41"></a>    }
+</span><span id="__span-35-42"><a id="__codelineno-35-42" name="__codelineno-35-42" href="#__codelineno-35-42"></a>}
+</span></code></pre></div>
+<h5 id="2-xxl-job"><a class="toclink" href="../../xxx-job/#2-xxl-job">第2集 创建你的第一个XXL-Job分布式调度任务</a></h5>
+<p><strong>简介：创建你的第一个XXL-Job分布式调度任务</strong></p>
+<ul>
+<li>
+<p>注解介绍</p>
+</li>
+<li>
+<p>在 Spring Bean 实例中，开发 Job 方法方式格式要求为</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>public ReturnT&lt;String&gt; execute(String param)
+</span></code></pre></div>
+<ul>
+<li>为 Job 方法添加注解 （注解value值是调度中心新建任务的 JobHandler 属性的值）</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>@XxlJob(value=&quot;自定义jobHandler名称&quot;, init = &quot;handler初始化方法&quot;, destroy = &quot;handler 销毁方法&quot;)
+</span></code></pre></div>
+<ul>
+<li>编写代码</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>@Component
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>public class MyJobHandler {
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    private Logger log = LoggerFactory.getLogger(MyJobHandler.class);
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>    @XxlJob(value = &quot;demoJobHandler&quot;,init = &quot;init&quot;,destroy = &quot;destroy&quot;)
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>    public ReturnT&lt;String&gt; execute(String param){
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>        log.info(&quot;小滴课堂 execute 任务方法触发成功&quot;);
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>        return ReturnT.SUCCESS;
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>    }
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>    private void init(){
+</span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a>
+</span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>
+</span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a>        log.info(&quot;小滴课堂 MyJobHandler init &gt;&gt;&gt;&gt;&gt;&quot;);
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a>    }
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a>    private void destroy(){
+</span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a>        log.info(&quot;小滴课堂 MyJobHandler destroy &gt;&gt;&gt;&gt;&gt;&quot;);
+</span><span id="__span-38-22"><a id="__codelineno-38-22" name="__codelineno-38-22" href="#__codelineno-38-22"></a>    }
+</span><span id="__span-38-23"><a id="__codelineno-38-23" name="__codelineno-38-23" href="#__codelineno-38-23"></a>
+</span><span id="__span-38-24"><a id="__codelineno-38-24" name="__codelineno-38-24" href="#__codelineno-38-24"></a>}
+</span></code></pre></div>
+<ul>
+<li>执行器管理</li>
+<li>
+<p>到xxl-job调度中心里的执行器管理-&gt;新增</p>
+<ul>
+<li>Appname：是每一个执行器的唯一表示AppName，执行器会以周期性为appname进行注册，为任务调度的时候使用</li>
+<li>名称：执行器的名称，因为appname有限制字母与数字等等组成，可读性不强，这个名称就是为了提高执行器的可读性</li>
+<li>注册方式：调度中心获取执行器地址的方式</li>
+<li>自动注册：执行器自动进行执行器的注册，通过底层的注册表可以动态的发现执行器机器的地址</li>
+<li>手动录入：人工手动录入执行器的地址信息，多地址使用逗号进行分割，供调度中心使用</li>
+<li>机器地址：“注册方式”为手动录入的时候才能使用，支持人工维护执行器的地址</li>
+<li>点击保存后可能要等30S左右才回显示机器的地址</li>
+</ul>
+</li>
+<li>
+<p>任务管理</p>
+</li>
+<li>任务管理-&gt;选择所需要管理的执行器-&gt;新增执行器</li>
+</ul>
+<h5 id="3-xxl-job_1"><a class="toclink" href="../../xxx-job/#3-xxl-job_1">第3集 执行和分析第一个XXL-Job分布式调度任务</a></h5>
+<p><strong>简介：执行和分析第一个XXL-Job分布式调度任务</strong></p>
+<ul>
+<li>
+<p>任务管理-启动任务</p>
+</li>
+<li>
+<p>任务管理的状态已经从STOP变更成RUNNING</p>
+</li>
+<li>
+<p>调度日志</p>
+</li>
+<li>
+<p>在调度日志里能够查看调度结果与日志的信息</p>
+</li>
+</ul>
+<h5 id="4-executor"><a class="toclink" href="../../xxx-job/#4-executor">第4集 Executor执行器多节点部署和调度策略讲解实战</a></h5>
+<p><strong>简介：执行器多节点部署和调度策略讲解实战</strong></p>
+<ul>
+<li>本机部署多节点</li>
+<li>程序端口修改</li>
+<li>
+<p>执行器端口修改</p>
+</li>
+<li>
+<p>策略</p>
+</li>
+<li>第一个、最后一个、轮训</li>
+</ul>
+<p><strong>更多架构课程请访问 xdclass.net</strong></p>
+<h4 id="xxl-job_1"><a class="toclink" href="../../xxx-job/#xxl-job_1">第四章 【进阶】XXL-Job分布式调度多案例实战</a></h4>
+<h5 id="1_1"><a class="toclink" href="../../xxx-job/#1_1">第1集 分布式调度参数传递和调度日志配置</a></h5>
+<p><strong>简介：分布式调度参数传递和调度日志配置讲解</strong></p>
+<ul>
+<li>UI界面参数传递</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>String jobParam = XxlJobHelper.getJobParam();
+</span></code></pre></div>
+<ul>
+<li>执行日志打印</li>
+<li>
+<p>需要通过 "XxlJobHelper.log" 打印执行日志</p>
+</li>
+<li>
+<p>执行结果</p>
+</li>
+<li>默认任务结果为 "成功" 状态，不需要主动设置</li>
+<li>自主设置任务结果（会出现在【执行备注】里面）<ul>
+<li>如想设置任务结果为失败，可以通过 "XxlJobHelper.handleFail</li>
+<li>如想设置任务结果为成功，handleSuccess" </li>
+</ul>
+</li>
+</ul>
+<h5 id="2-xxl-job_1"><a class="toclink" href="../../xxx-job/#2-xxl-job_1">第2集 【高级】XXL-Job集群部署和高可用案例配置</a></h5>
+<p><strong>简介：【高级】XXL-Job集群部署和高可用案例讲解</strong></p>
+<ul>
+<li>
+<p>HA/集群</p>
+</li>
+<li>
+<p>为了避免单点故障，任务调度系统通常需要通过集群实现系统高可用</p>
+</li>
+<li>
+<p>由于任务调度系统的特殊性，“调度”和“任务”两个模块需要均支持集群部署，由于职责不同，因此各自集群侧重点也有有所不同。</p>
+</li>
+<li>
+<p>调度中心集群</p>
+<ul>
+<li>目标为避免调度模块单点故障，集群节点需要通过锁或命名服务保证单个任务的单次触发，只在其中一个节点上生效，以防止任务的重复触发。</li>
+</ul>
+</li>
+<li>
+<p>执行器集群</p>
+<ul>
+<li>目标为避免任务模块单点故障，进一步可以通过自定义路由策略实现Failover等高级功能，从而在执行器某台机器节点故障时自动转移不会影响到任务的正常触发执行</li>
+</ul>
+</li>
+<li>
+<p>高可用集群架构</p>
+</li>
+<li>
+<p>执行器配置调度中心集群</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>#调度中心部署地址,多个配置逗号分隔 &quot;http://address01,http://address02&quot;
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin,http://127.0.0.1:8079/xxl-job-admin
+</span></code></pre></div>
+<h5 id="3-xxl-job-"><a class="toclink" href="../../xxx-job/#3-xxl-job-">第3集 【高级】XXL-Job海量数据处理-分片任务实战《上》</a></h5>
+<p><strong>简介：XXL-Job海量数据处理-分片任务实战《上》</strong></p>
+<ul>
+<li>
+<p>需求</p>
+</li>
+<li>
+<p>有一个任务需要处理100W条数据，每条数据的业务逻辑处理要0.1s</p>
+</li>
+<li>对于普通任务来说，只有一个线程来处理 可能需要10万秒才能处理完，业务则严重受影响</li>
+<li>
+<p>案例：双十一大促，给1000万用户发营销短信</p>
+</li>
+<li>
+<p>什么是分片任务</p>
+</li>
+<li>
+<p>执行器集群部署，如果任务的路由策略选择【分片广播】，一次任务调度将会【广播触发】对应集群中所有执行器执行一次任务，同时系统自动传递分片参数，执行器可根据分片参数开发分片任务</p>
+</li>
+<li>需要处理的海量数据，以执行器为划分，每个执行器分配一定的任务数，并行执行</li>
+<li>XXL-Job支持动态扩容执行器集群，从而动态增加分片数量，到达更快处理任务</li>
+<li>分片的值是调度中心分配的</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>// 当前分片数，从0开始，即执行器的序号
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>int shardIndex = XxlJobHelper.getShardIndex();
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>//总分片数，执行器集群总机器数量
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>int shardTotal = XxlJobHelper.getShardTotal();
+</span></code></pre></div>
+<ul>
+<li>
+<p>解决思路</p>
+</li>
+<li>
+<p>如果将100W数据均匀分给集群里的10台机器同时处理，</p>
+</li>
+<li>每台机器耗时，1万秒即可，耗时会大大缩短，也能充分利用集群资源</li>
+<li>
+<p>在xxl-job里，可以配置执行器集群有10个机器，那么分片总数是10，分片序号0~9 分别对应那10台机器。</p>
+</li>
+<li>
+<p>分片方式</p>
+<ul>
+<li>id % 分片总数 余数是0 的，在第1个执行器上执行</li>
+<li>id % 分片总数 余数是1 的，在第2个执行器上执行</li>
+<li>id % 分片总数 余数是2 的，在第3个执行器上执行</li>
+<li>...</li>
+<li>id % 分片总数 余数是9 的，在第10个执行器上执行</li>
+</ul>
+</li>
+<li>
+<p>路由策略</p>
+<ul>
+<li>选择为【分片广播】</li>
+</ul>
+</li>
+<li>
+<p>其他解决方式</p>
+<ul>
+<li>也可以启动多个job，使用同个jobHandler,通过命令行参数控制</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-xxl-job-"><a class="toclink" href="../../xxx-job/#4-xxl-job-">第4集 【高级】XXL-Job海量数据处理-分片任务实战《下》</a></h5>
+<p><strong>简介：XXL-Job海量数据处理-分片任务实战《上》</strong></p>
+<ul>
+<li>
+<p>编码实战</p>
+</li>
+<li>
+<p>需求：100个用户，分片处理</p>
+</li>
+<li>新增job测试案例</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>   /**
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>     * 2、分片广播任务
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>     */
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>    @XxlJob(&quot;shardingJobHandler&quot;)
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>    public void shardingJobHandler() throws Exception {
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>        // 当前分片数，从0开始，即执行器的序号
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>        int shardIndex = XxlJobHelper.getShardIndex();
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>        //总分片数，执行器集群总机器数量
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>        int shardTotal = XxlJobHelper.getShardTotal();
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>
+</span><span id="__span-42-12"><a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>
+</span><span id="__span-42-13"><a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>        XxlJobHelper.log(&quot;分片参数：当前分片序号 = {}, 总分片数 = {}&quot;, shardIndex, shardTotal);
+</span><span id="__span-42-14"><a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>
+</span><span id="__span-42-15"><a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>        // 业务逻辑
+</span><span id="__span-42-16"><a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a>        for (int i = 0; i &lt; shardTotal; i++) {
+</span><span id="__span-42-17"><a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a>            if (i == shardIndex) {
+</span><span id="__span-42-18"><a id="__codelineno-42-18" name="__codelineno-42-18" href="#__codelineno-42-18"></a>                log.info(&quot;第 {} 片, 命中分片开始处理&quot;, i);
+</span><span id="__span-42-19"><a id="__codelineno-42-19" name="__codelineno-42-19" href="#__codelineno-42-19"></a>
+</span><span id="__span-42-20"><a id="__codelineno-42-20" name="__codelineno-42-20" href="#__codelineno-42-20"></a>            } else {
+</span><span id="__span-42-21"><a id="__codelineno-42-21" name="__codelineno-42-21" href="#__codelineno-42-21"></a>                log.info(&quot;第 {} 片, 忽略&quot;, i);
+</span><span id="__span-42-22"><a id="__codelineno-42-22" name="__codelineno-42-22" href="#__codelineno-42-22"></a>            }
+</span><span id="__span-42-23"><a id="__codelineno-42-23" name="__codelineno-42-23" href="#__codelineno-42-23"></a>        }
+</span><span id="__span-42-24"><a id="__codelineno-42-24" name="__codelineno-42-24" href="#__codelineno-42-24"></a>
+</span><span id="__span-42-25"><a id="__codelineno-42-25" name="__codelineno-42-25" href="#__codelineno-42-25"></a>    }
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>* 根据id进行分片取模（部署3个执行器）
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>    /**
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>     * 2、分片广播任务
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>     */
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    @XxlJob(&quot;shardingJobHandler&quot;)
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>    public void shardingJobHandler() throws Exception {
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>        // 当前分片数，从0开始，即执行器的序号
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>        int shardIndex = XxlJobHelper.getShardIndex();
+</span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a>        //总分片数，执行器集群总机器数量
+</span><span id="__span-43-10"><a id="__codelineno-43-10" name="__codelineno-43-10" href="#__codelineno-43-10"></a>        int shardTotal = XxlJobHelper.getShardTotal();
+</span><span id="__span-43-11"><a id="__codelineno-43-11" name="__codelineno-43-11" href="#__codelineno-43-11"></a>
+</span><span id="__span-43-12"><a id="__codelineno-43-12" name="__codelineno-43-12" href="#__codelineno-43-12"></a>        XxlJobHelper.log(&quot;分片参数：当前分片序号 = {}, 总分片数 = {}&quot;, shardIndex, shardTotal);
+</span><span id="__span-43-13"><a id="__codelineno-43-13" name="__codelineno-43-13" href="#__codelineno-43-13"></a>
+</span><span id="__span-43-14"><a id="__codelineno-43-14" name="__codelineno-43-14" href="#__codelineno-43-14"></a>
+</span><span id="__span-43-15"><a id="__codelineno-43-15" name="__codelineno-43-15" href="#__codelineno-43-15"></a>        List&lt;Integer&gt; allUserIds = getAllUserIds();
+</span><span id="__span-43-16"><a id="__codelineno-43-16" name="__codelineno-43-16" href="#__codelineno-43-16"></a>        allUserIds.forEach(obj -&gt; {
+</span><span id="__span-43-17"><a id="__codelineno-43-17" name="__codelineno-43-17" href="#__codelineno-43-17"></a>            if (obj % shardTotal == shardIndex) {
+</span><span id="__span-43-18"><a id="__codelineno-43-18" name="__codelineno-43-18" href="#__codelineno-43-18"></a>                log.info(&quot;第 {} 片, 命中分片开始处理用户id={}&quot;,shardIndex,obj);
+</span><span id="__span-43-19"><a id="__codelineno-43-19" name="__codelineno-43-19" href="#__codelineno-43-19"></a>            }
+</span><span id="__span-43-20"><a id="__codelineno-43-20" name="__codelineno-43-20" href="#__codelineno-43-20"></a>        });
+</span><span id="__span-43-21"><a id="__codelineno-43-21" name="__codelineno-43-21" href="#__codelineno-43-21"></a>    }
+</span><span id="__span-43-22"><a id="__codelineno-43-22" name="__codelineno-43-22" href="#__codelineno-43-22"></a>
+</span><span id="__span-43-23"><a id="__codelineno-43-23" name="__codelineno-43-23" href="#__codelineno-43-23"></a>    private List&lt;Integer&gt; getAllUserIds() {
+</span><span id="__span-43-24"><a id="__codelineno-43-24" name="__codelineno-43-24" href="#__codelineno-43-24"></a>
+</span><span id="__span-43-25"><a id="__codelineno-43-25" name="__codelineno-43-25" href="#__codelineno-43-25"></a>        List&lt;Integer&gt; ids = new ArrayList&lt;&gt;();
+</span><span id="__span-43-26"><a id="__codelineno-43-26" name="__codelineno-43-26" href="#__codelineno-43-26"></a>        for (int i = 0; i &lt; 100; i++) {
+</span><span id="__span-43-27"><a id="__codelineno-43-27" name="__codelineno-43-27" href="#__codelineno-43-27"></a>            ids.add(i);
+</span><span id="__span-43-28"><a id="__codelineno-43-28" name="__codelineno-43-28" href="#__codelineno-43-28"></a>        }
+</span><span id="__span-43-29"><a id="__codelineno-43-29" name="__codelineno-43-29" href="#__codelineno-43-29"></a>        return ids;
+</span><span id="__span-43-30"><a id="__codelineno-43-30" name="__codelineno-43-30" href="#__codelineno-43-30"></a>    }
+</span></code></pre></div>
+<h5 id="5-"><a class="toclink" href="../../xxx-job/#5-">第5集 留给大家的作业-海量任务定时调度-处理维护三连问</a></h5>
+<p><strong>简介： 留给大家的作业-海量任务定时调度-处理维护三连问</strong></p>
+<ul>
+<li>
+<p>需求背景</p>
+</li>
+<li>
+<p>为了促进平台用户活跃度，鼓励用户每天登录网站</p>
+</li>
+<li>
+<p>短链平台，每天可以免费创建2次短链，每天限制次数</p>
+<ul>
+<li>用户量：千万级别、甚至亿级别</li>
+<li>每个用户【每天】可以免费进行2次使用平台功能【免费流量包】</li>
+<li>如果用户超过2次还想使用平台功能，则可以付费购买流量包，增加每天次数【付费流量包】</li>
+</ul>
+</li>
+<li>
+<p>正式案例</p>
+<ul>
+<li>百度云短链平台：https://dwz.cn/console/product</li>
+</ul>
+</li>
+<li>
+<p>如何维护好用户每天的免费权益次数呢 ？？？</p>
+</li>
+<li>
+<p>怎么维护更新好流量包每天的次数呢</p>
+</li>
+<li>
+<p>留给老王的作业，海量数据项目大课里面的核心内容</p>
+</li>
+<li>
+<p>分片广播任务</p>
+</li>
+<li>
+<p>惰性更新+定时更新</p>
+</li>
+<li>
+<p>业务模型适合场景</p>
+</li>
+<li>
+<p>拼多多用户签到，总签到次数达到一定数值后，免费领取商品，每天限制次数</p>
+</li>
+<li>
+<p>信用卡每天领取积分，每天限制次数</p>
+</li>
+<li>
+<p>电商平台抽奖，每天免费抽奖两次，每天限制次数</p>
+</li>
+</ul>
+<h5 id="6-xxl-job"><a class="toclink" href="../../xxx-job/#6-xxl-job">第6集 学完分布式调度XXL-Job后你的下一步</a></h5>
+<p><strong>简介： 学完分布式调度XXL-Job后你的下一步</strong></p>
+<h4 id="xxl-job_2"><a class="toclink" href="../../xxx-job/#xxl-job_2">第五章 分布式调度XXL-Job课程总结和学习建议</a></h4>
+<h5 id="1-xxl-job"><a class="toclink" href="../../xxx-job/#1-xxl-job">第1集  分布式调度XXL-Job课程总结</a></h5>
+<p><strong>简介： 分布式调度XXL-Job课程总结</strong></p>
+<ul>
+<li>知识点回顾</li>
+<li>需求背景</li>
+<li>同类解决方案</li>
+<li>XXL-Job部署架构</li>
+<li>SpringBoot项目整合</li>
+<li>多节点部署和调度策略</li>
+<li>控制台日志配置</li>
+<li>高可用案例</li>
+<li>分片任务实战</li>
+</ul>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/saymealoud.png" alt="Chester Zhao">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2024-01-31 00:00:00">January 31, 2024</time></li>
         
           <li class="md-meta__item">
