@@ -40,10 +40,12 @@ Spring Framework 接口怎么简化, 设计如何优美,始终无法摆脱被动
 
 
 - 创建独立的 Spring 应用程序 直接嵌入 Tomcat、Jetty 或 Undertow（无需部署 WAR 文件）
--  提供固化的 “starter” 依赖项以简化构建配置 
-- 当条件满足时自动装配 Spring 或第三方类库 
-- 提供运维 (production-ready)特性，如指标信息(Metrics )、健康检查及外部化配置 
+-  提供固化的 "starter" 依赖项以简化构建配置
+- 当条件满足时自动装配 Spring 或第三方类库
+- 提供运维 (production-ready)特性，如指标信息(Metrics )、健康检查及外部化配置
 - 绝无生成代码，并且不需要 XML 配置
+
+<!-- more -->
 
 ## Chapter 6
 
