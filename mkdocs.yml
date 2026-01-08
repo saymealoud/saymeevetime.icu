@@ -29,23 +29,24 @@ theme:
     - search.highlight
     - toc.follow
   palette:
-    # 浅色主题 - 使用温暖的蓝色调
+    # 浅色主题 - 极简白风格
     - scheme: default
-      primary: indigo
-      accent: deep purple
+      primary: white
+      accent: indigo
       toggle:
         icon: material/weather-night
         name: 切换到深色模式
-    # 深色主题 - 使用舒适的暗色
+    # 深色主题 - 沉浸黑风格
     - scheme: slate
-      primary: indigo
-      accent: teal
+      primary: black
+      accent: indigo
       toggle:
         icon: material/weather-sunny
         name: 切换到浅色模式
   font:
     text: Roboto
     code: Roboto Mono
+  # 优化中文字体显示(通过CSS覆盖，此处保留默认英文)
   language: zh
 
 plugins:
@@ -98,6 +99,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tilde
+  - pymdownx.magiclink
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.highlight:
