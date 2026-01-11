@@ -55,7 +55,7 @@ plugins:
   - tags:
       tags_file: tags.md
   - blog:
-      blog_dir: posts
+      blog_dir: .
       authors: true
       post_url_format: "{slug}"
       post_excerpt: required
@@ -110,6 +110,4 @@ markdown_extensions:
       alternate_style: true
 
 nav:
-  - Home: index.md
-  - Blog:
-      - posts/
+  - index.md
