@@ -1,0 +1,1283 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Chester Zhao 的个人技术博客 - 记录技术成长与思考">
+      
+      
+        <meta name="author" content="Chester Zhao">
+      
+      
+      
+        <link rel="prev" href="../%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85rabbitmq%E6%8C%87%E5%8D%97/">
+      
+      
+        <link rel="next" href="../devops/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/book-open-page-variant">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>RabbitMQ - saymealoud</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="saymealoud" class="md-header__button md-logo" aria-label="saymealoud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            saymealoud
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RabbitMQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saymealoud/saymeevetime.icu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saymealoud/saymeevetime.icu
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../archive/2026/" class="md-tabs__link">
+          
+  
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../category/book/" class="md-tabs__link">
+          
+  
+  
+  分类
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="saymealoud" class="md-nav__button md-logo" aria-label="saymealoud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    saymealoud
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saymealoud/saymeevetime.icu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saymealoud/saymeevetime.icu
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    归档
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    归档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2024
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分类
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    life
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tech
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        消息真的发送出去了吗?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        消息真的被路由了吗?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到主页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://github.com/saymealoud.png" alt="Chester Zhao">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Chester Zhao
+                        
+                      </strong>
+                      <br>
+                      Creator
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    元数据
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2024-03-22 00:00:00+00:00" class="md-ellipsis">2024年3月22日</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            分类于
+                            
+                              <a href="../category/tech/">tech</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              需要 3 分钟阅读时间
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+  
+
+
+  <h1>RabbitMQ</h1>
+
+<h2 id="_1">消息真的发送出去了吗?</h2>
+<ul>
+<li>消息发送后,发送端不知道Rabbit MQ 是否真的收到了消息</li>
+<li>若 Rabbit MQ 异常,消息丢失后,订单处理流程停止,业务异常</li>
+<li>需要使用Rabbit MQ 发送端确认机制, 确认消息发送</li>
+</ul>
+<!-- more -->
+
+<h2 id="_2">消息真的被路由了吗?</h2>
+<ul>
+<li>消息发送后,发送端不知道消息是否被正确路由, 若路由异常,消息会被丢弃</li>
+<li>消息丢弃后,订单处理流程停止,业务异常</li>
+<li>需要使用 Rabbit MQ 消息返回机制, 确认消息被正确路由</li>
+</ul>
+<p>队列饱满怎么办?</p>
+<ul>
+<li>默认情况下,消息进入队列,会永远存在,直到被消费</li>
+<li>大量堆积的消息会给Rabbit MQ 产生很大的压力</li>
+<li>需要使用 Rabbit MQ 消息过期时间,  防止消息大量积压</li>
+</ul>
+<p>如何转移过期消息</p>
+<ul>
+<li>消息被设置了过期时间,过期后会直接被丢弃</li>
+<li>直接被丢弃的消息,无法对系统运行异常发出警报 </li>
+<li>需要使用 Rabbit MQ <strong>死信队列</strong> ,收集过期消息,以供分析</li>
+</ul>
+<p>目前需要处理:</p>
+<ol>
+<li>发送端确认</li>
+<li>消息返回</li>
+<li>消费端限流</li>
+<li>消费端确认</li>
+<li>消息过期机制</li>
+<li>死信队列</li>
+</ol>
+<p>实际开发经验</p>
+<ol>
+<li>线程池    溢出  线程爆炸</li>
+<li>POJO    类 单一职责</li>
+</ol>
+<p>发送方</p>
+<ul>
+<li>需要使用 Rabbit MQ <strong>发送端确认机制,</strong>确认消息成功发送到 Rabbit MQ 并被处理</li>
+<li>需要使用Rabbit MQ  <strong>消息返回机制</strong>, 若没发现目标队列, 中间件会通知发送方</li>
+</ul>
+<p>消费方</p>
+<ul>
+<li>需要使用 Rabbit MQ <strong>消费端确认机制</strong>,  确认消息没有发生处理异常</li>
+<li>需要使用 Rabbit MQ  <strong>消费端限流机制</strong>, 限制消息推送速度, 保障接收端服务稳定</li>
+</ul>
+<p>Rabbit MQ 自身</p>
+<ul>
+<li>大量堆积的消息会给 Rabbit MQ  产生很大的压力, 需要使用 Rabbit MQ <strong>消息过期时间</strong>,防止消息大量积压</li>
+<li>过期后会直接丢弃, 无法对系统运行异常发出警报, 需要使用 Rabbit MQ  <strong>死信队列</strong> , 收集过期消息,以供分析</li>
+</ul>
+<p>消息真的发出去了吗?</p>
+<ul>
+<li>消息发送后, 发送端不知道 Rabbit MQ 是否真的收到了消息</li>
+<li>若 Rabbit MQ异常 , 消息丢失后, 订单处理流程停止, 业务异常</li>
+<li>需要使用 Rabbit MQ <strong>发送端确认机制</strong>, 确认消息发送</li>
+</ul>
+<p>什么是发送端确认机制</p>
+<ul>
+<li>消息发送后, 若中间件收到消息,会给发送端一个应答</li>
+<li>生产者,接收应答,用来确认这条消息是否正常发送到中间件</li>
+</ul>
+<p>三种确认机制</p>
+<ul>
+<li>单条同步确认</li>
+<li>配置 Channel ,开启确认模式: channel.confirmSelect()</li>
+<li>每发送一条消息,调用 channel.waitForConfirms()方法,等待确认</li>
+<li>多条同步确认 (不推荐)</li>
+<li>配置 Channel ,开启确认模式: channel.confirmSelect()</li>
+<li>发送多条消息,调用 channel.waitForConfirms()方法,等待确认 </li>
+<li>异步确认 (不推荐)</li>
+<li>配置 Channel ,开启确认模式: channel.confirmSelect()</li>
+<li>在channel 上添加监听: addConfirmListener, 发送消息后,会回调此方法,通知是否发送成功</li>
+<li>异步确认有可能是单条, 也有可能是多条,取决于 MQ</li>
+</ul>
+<p>消息真的被路由了吗</p>
+<ul>
+<li>消息发送后,发送端不知道消息是否被正确路由,若路由异常,消息会被丢弃</li>
+<li>消息丢弃后,订单处理流程停止,业务异常</li>
+<li>需要使用 Rabbit MQ <strong>消息返回机制</strong>, 确认消息被正确路由</li>
+</ul>
+<p>消息返回机制的原理</p>
+<ul>
+<li>消息发送后,中间件会对消息进行路由</li>
+<li>若没有发现目标队列, 中间件会通知发送方</li>
+<li>Return Listener 会被调用</li>
+</ul>
+<p>消息返回的开启方法</p>
+<ul>
+<li>在 Rabbit MQ 基础配置中有一个关键配置项 : Mandatory </li>
+<li>Mandatory 若为false, Rabbit MQ 将直接丢弃无法路由的消息</li>
+<li>Mandatory 若为 true , Rabbit MQ 才会处理无法路由的消息</li>
+</ul>
+<p>消费端确认机制</p>
+<ul>
+<li>默认情况下,消费端接收消息时,消息会被自动确认 (ACK)</li>
+<li>消费端处理消息异常时,发送端与消息中间件无法得知消息处理情况</li>
+<li>需要使用 Rabbit MQ <strong>消费端确认机制</strong>, 确认消息被正确处理</li>
+</ul>
+<p>消费端 ACK 类型</p>
+<ul>
+<li>自动 ACK : 消费端收到消息后, 会自动签收消息</li>
+<li>手动 ACK: 消费端收到消息后, 不会自动签收消息, 需要我们在业务代码中显式签收消息</li>
+<li>单条手动 ACK : multiple = false (<strong>推荐</strong>)</li>
+<li>多条手动 ACK : multiple = true</li>
+</ul>
+<p>重回队列</p>
+<ul>
+<li>若设置了重回队列, 消息被 NACK后, 会返回队列末尾,等待进一步处理</li>
+<li>一般不建议开启重回队列,因为第一次处理异常的消息,再次处理,基本上也是异常</li>
+</ul>
+<p>消费端限流机制</p>
+<ul>
+<li>业务高峰期,可能出现发送端与接收端性能不一致,大量消息被同时推送给接收端,造成接收端服务崩溃</li>
+<li>需要使用 Rabbit MQ <strong>消费端限流机制</strong>, 限制消息推送速度,保障接收端服务稳定</li>
+</ul>
+<p>实际场景</p>
+<ul>
+<li>业务高峰期,有个微服务崩溃了,崩溃期间队列积压了大量消息,微服务上线后,收到大量并发消息</li>
+<li>将同样多的消息推给能力不同的副本,会导致部分副本异常</li>
+</ul>
+<p>Rabbit MQ   QoS</p>
+<ul>
+<li>针对上面问题,  Rabbit MQ 开发了 QoS (服务质量保证)功能</li>
+<li>QoS 功能保证了在一定数目的消息未被确认前,不消费新的信息</li>
+<li>Qos 功能的前提是不使用自动确认</li>
+</ul>
+<p>QoS 原理</p>
+<ul>
+<li>QoS 原理是当消费者有一定数量的消息未被 ACK 确认时, Rabbit MQ 不给消费端推送新的消息</li>
+<li>Rabbit MQ 使用 QoS 机制实现了消费端限流</li>
+</ul>
+<p>消费端限流机制参数设置</p>
+<ul>
+<li>prefetchCount:  针对消费端最多推送多少未确认消息</li>
+<li>global: true : 针对整个消费端限流 false : 针对当前 channel </li>
+<li>prefetchSize: 0 (单个消息大小限制, 一般为 0)</li>
+<li>prefetchSize 与 global 两项, Rabbit MQ 暂时未实现</li>
+</ul>
+<p>消息过期机制</p>
+<p>队列饱满怎么办?</p>
+<ul>
+<li>默认情况下,消息进入队列,会永远存在,直到被消费</li>
+<li>大量堆积的消息回给 Rabbit MQ 产生很大的压力</li>
+<li>需要使用 Rabbit MQ <strong>消息过期时间</strong>,防止消息大量积压</li>
+</ul>
+<p>Rabbit MQ的 过期时间 (TTL)</p>
+<ul>
+<li>Rabbit MQ 的过期时间称为  TTL </li>
+<li>Rabbit MQ 过期时间分为 消息 TTL 和 队列 TTL</li>
+<li>消息TTL 设置了消息的单条过期</li>
+<li>队列 TTL 设置了队列中所有消息的过期时间  (如果之前已经定义了队列那就要删除,不然会设置 TTL 启动会报错)</li>
+</ul>
+<p>如何找到自己合适的 TTL?</p>
+<ul>
+<li>TTL  设置主要考虑技术架构与业务</li>
+<li>TTL 应该明显长于服务的平均重启时间</li>
+<li>建议 TTL 长于业务高峰期时间</li>
+</ul>
+<p>死信队列</p>
+<p>如何转移过期消息?</p>
+<ul>
+<li>消息设置了过期时间,过期后会直接丢弃</li>
+<li>直接丢弃的消息,无法对系统运行异常发出警报</li>
+<li>需要使用 Rabbit MQ 私信队列, 收集过期消息,以供分析</li>
+</ul>
+<p>什么是死信队列</p>
+<ul>
+<li>死信队列: 队列配置了 DLX 属性(Dead-Letter-Exchange)</li>
+<li>当一个消息变成死信(dead message )后, 能重新被发布到另一个 Exchange,这个 Exchange 也是一个普通的交换机</li>
+<li>死信被死信交换机路由后, 一般进入一个固定队列</li>
+</ul>
+<p>怎么变成死信</p>
+<ul>
+<li>消息被拒绝 (reject/nack) 并且 requeue = false</li>
+<li>消息过期 (TTL 到期)</li>
+<li>队列达到最大长度</li>
+</ul>
+<p>死信队列设置方法</p>
+<ul>
+<li>设置转发、接收死信的交换机和队列:</li>
+<li>Exchange: dlx.exchange</li>
+<li>Queue: dlx.queue</li>
+<li>RoutingKey: #</li>
+<li>在需要设置死信的队列加入参数:</li>
+<li>X-dead-letter-exchange =dlx.exchange</li>
+</ul>
+<p>summary</p>
+<p>慎用Rabbit MQ 高级特性</p>
+<ul>
+<li>不要无限追求高级,用 Rabbit MQ的高级特性</li>
+<li>重回队列、发送端确认是不常用的特性,谨慎使用</li>
+<li>管控台是 调试 Rabbit MQ的利器</li>
+<li>Rabbit MQ高级特性多数涉及交换机、队列的属性配置,可以在管控台确认配置是否生效</li>
+<li>Rabbit MQ 高级特性很多都可以在管控台进行实验</li>
+</ul>
+<p>总结</p>
+<ul>
+<li>为了确保消息发送,使用了发送端确认机制</li>
+<li>为了确保消息正确路由,使用了消息返回机制</li>
+<li>为了保证消息正常梳理,使用了消费端确认机制</li>
+<li>为了保证消费端稳定,使用消费端限流机制</li>
+<li>为了中间件问题,使用过期时间机制</li>
+<li>为了处理异常消息,使用死信机制</li>
+</ul>
+<p>引入 Spring Boot 的重要性 </p>
+<ol>
+<li>易用的 Rabbit MQ 连接方式</li>
+<li>方便的 Rabbit MQ配置方式</li>
+<li>提供了完善的消息收发方式</li>
+</ol>
+<p>Spring AMQP 特性</p>
+<ul>
+<li>异步消息监听容器</li>
+<li>原始实现: 自己实现线程池、回调方法,并注册回调方法</li>
+<li>Spring Boot: 自动实现可配置的线程池,并自动注册回调方法,只需实现回调方法</li>
+<li>原生提供 RabbitTemplate , 方便收发消息</li>
+<li>相比 basicPublish, 功能更强大,能自动实现消息转换等功能</li>
+<li>原生提供 RabbitAdmin ,方便队列、交换机声明</li>
+<li>声明式提供队列、交换机、绑定关系的注册方法</li>
+<li>设置不需要显式的注册代码</li>
+<li>Spring Boot Config  原生支持 Rabbit MQ </li>
+<li>充分发挥 Spring Boot 约定大于配置的特性</li>
+<li>可以隐式建立 Connection、Channel</li>
+</ul>
+<p>RabbitAdmin</p>
+<ul>
+<li>
+<p>管理 Rabbit MQ</p>
+</li>
+<li>
+<p>declareExchange : 创建交换机</p>
+</li>
+<li>deleteExchange: 删除交换机</li>
+<li>declareQueue: 创建队列</li>
+<li>deleteQueue : 删除队列</li>
+<li>purgeQueue: 清空队列</li>
+<li>declareBinding: 新建绑定关系</li>
+<li>removeBinding:  删除绑定关系</li>
+<li>
+<p>getQueueProperties: 查询队列属性</p>
+</li>
+<li>
+<p>创建方法</p>
+</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ConnectionFactory</span><span class="w"> </span><span class="n">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CachingConnectionFactory</span><span class="p">();</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">RabbitAdmin</span><span class="w"> </span><span class="n">rabbitAdmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RabbitAdmin</span><span class="p">(</span><span class="n">connectionFactory</span><span class="p">);</span>
+</span></code></pre></div>
+<p>RabbitAdmin 声明式配置</p>
+<ul>
+<li>将Exchange、Queue、Binding 声明为 Bean</li>
+<li>再将 RabbitAdmin 声明为  Bean</li>
+<li>Exchange、Queue、Binding 即可自动创建</li>
+</ul>
+<p>RabbitAdmin  声明式配置的优点</p>
+<ul>
+<li>将声明和创建工作分开,解耦多人工作</li>
+<li>不需要显式声明,减少代码量,减少bug</li>
+</ul>
+<p>RabbitTemplate</p>
+<ul>
+<li>RabbitTemplate 与 RestTemplate 类似,使用了模版方法设计模式</li>
+<li>RabbitTemplate 提供了丰富的功能,方便消息收发</li>
+<li>RabbitTemplate 可以显式传入配置也可以隐式声明配置</li>
+</ul>
+<p>SimpleMessageListenerContainer 高效监听消息</p>
+<ul>
+<li>设置同时监听多个队列、自动启动、自动配置Rabbit MQ</li>
+<li>设置消费者数量 (最大数量、最小数量、批量消费)</li>
+<li>设置消息确认模式、是否重回队列、异常捕获</li>
+<li>设置是否独占、其他消费者属性等</li>
+<li>设置具体的监听器、消息转换器等</li>
+<li>支持动态设置,运行中修改监听器配置</li>
+</ul>
+<p>MessageListenerAdapter 消息监听适配器</p>
+<ul>
+<li>适配器设计模式</li>
+<li>解决业务逻辑代码无法修改的问题</li>
+</ul>
+<p>MessageConverter</p>
+<ul>
+<li>
+<p>收发消息,使用 Byte[] 数组作为消息体</p>
+</li>
+<li>
+<p>编写业务逻辑时,需要使用 Java 对象</p>
+</li>
+<li>
+<p>MessageConverter 用来在接收消息时自动转换消息</p>
+</li>
+</ul>
+<p>Jackson2JsonMessageConverter</p>
+<ul>
+<li>最常用的 MessageConverter ,用来转换 Json 格式信息</li>
+<li>配合 ClassMapper 可以直接转换为 POJO 对象 </li>
+</ul>
+<p>RabbitListener </p>
+<ul>
+<li>RabbitListener 是 SpringBoot 架构中监听消息的“终极方案”</li>
+<li>RabbitListener 使用注解声明,对业务代码无侵入</li>
+<li>RabbitListener 可以在 Springboot  配置文件中进行配置</li>
+</ul>
+<p>@RabbitListener 注解</p>
+<ul>
+<li>@RabbitListener 是一个组合注解,可以嵌套以下注解</li>
+<li>@Exchange : 自动声明Exchange</li>
+<li>@Queue : 自动声明队列</li>
+<li>@QueueBinding: 自动声明绑定关系</li>
+</ul>
+<p>Rabbit 容量不足</p>
+<ul>
+<li>受制于服务器、虚机、容器的规模,单节Rabbit MQ容量受限</li>
+<li>在业务量庞大时,单节点MQ可能会因为内存不足导致 OOM</li>
+</ul>
+<p>Rabbit MQ 数据无副本</p>
+<ul>
+<li>单节点 Rabbit MQ 没有备份数据</li>
+<li>若单节点故障, 消息数据丢失</li>
+</ul>
+<p>Rabbit MQ 可用性低</p>
+<ul>
+<li>单节点 Rabbit MQ 不可避免会出现故障</li>
+<li>单节点故障后, Rabbit MQ 服务不可用,系统业务崩溃</li>
+</ul>
+<p>单节点:</p>
+<ol>
+<li>规模不大 OOM</li>
+<li>数据安全</li>
+<li>可用性</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+    <h2 id="__comments">评论</h2>
+    <script src="https://giscus.app/client.js"
+      data-repo="saymealoud/saymeevetime.icu"
+      data-repo-id="R_kgDOLbykHA"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOLbykHM4CduoK"
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="1"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85rabbitmq%E6%8C%87%E5%8D%97/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 单节点安装Rabbitmq指南">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                单节点安装Rabbitmq指南
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../devops/" class="md-footer__link md-footer__link--next" aria-label="下一页: DevOps">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                DevOps
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Chester Zhao
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
