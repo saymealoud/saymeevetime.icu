@@ -400,48 +400,48 @@ federation的配置一共有三个层次
 
 UI操作：Exchanges->Add a new exchange
 
-![6-1](images/rabbitmq-cluster/6-1.jpg)
+![6-1](../images/rabbitmq-cluster/6-1.jpg)
 
 在rabbitmq中会有一些默认的exchange，创建完毕后如图：
 
-![6-2](images/rabbitmq-cluster/6-2.jpg)
+![6-2](../images/rabbitmq-cluster/6-2.jpg)
 
 创建queue：test.queue，绑定到test.exchange，key使用test。
 
 UI操作：Queues->Add a new queue
 
-![6-3](images/rabbitmq-cluster/6-3.jpg)
+![6-3](../images/rabbitmq-cluster/6-3.jpg)
 
 绑定到test.exchange，并设置key
 
 UI操作：Queues->All queues(test.queue[单击])->Bindings
 
-![6-4](images/rabbitmq-cluster/6-4.jpg)
+![6-4](../images/rabbitmq-cluster/6-4.jpg)
 
 创建upstream：upstream1
 
 UI操作：Admin->Federation Upstreams->Add a new upstream
 
-![6-5](images/rabbitmq-cluster/6-5.jpg)
+![6-5](../images/rabbitmq-cluster/6-5.jpg)
 
 创建Parameters：mqcluster
 
 UI操作：Admin->Federation Upstreams->Parameters
 
-![6-6](images/rabbitmq-cluster/6-6.jpg)
+![6-6](../images/rabbitmq-cluster/6-6.jpg)
 
 创建policy：mypolicy
 
 UI操作：Admin->Policies->Add / update a policy
 
-![6-7](images/rabbitmq-cluster/6-7.jpg)
+![6-7](../images/rabbitmq-cluster/6-7.jpg)
 
 状态图
 
-![6-8](images/rabbitmq-cluster/6-8.jpg)
+![6-8](../images/rabbitmq-cluster/6-8.jpg)
 
 观察26上面的连接
 
-![6-9](images/rabbitmq-cluster/6-9.jpg)
+![6-9](../images/rabbitmq-cluster/6-9.jpg)
 
 
