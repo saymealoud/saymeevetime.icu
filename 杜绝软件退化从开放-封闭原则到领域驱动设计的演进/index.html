@@ -714,6 +714,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="开发过程中，我们永远只戴一顶帽子：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正确的开发流程：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -774,7 +791,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         重构后的下单逻辑
@@ -795,13 +812,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         四、总结：让代码讲述业务故事
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="四、总结：让代码讲述业务故事">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防止软件退化的三板斧：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -932,28 +966,30 @@
 <p>软件退化的本质是系统复杂度的失控。当新需求到来时，如果开发者总是选择"阻力最小"的路径——即直接在原有的、已经很复杂的类或方法中通过 <code>if-else</code> 堆砌新逻辑，系统就会迅速腐化。</p>
 <h3 id="-ocp">开放-封闭原则（OCP）</h3>
 <p><strong>开放-封闭原则</strong>（Open-Closed Principle）是面向对象设计（SOLID）的核心之一，它为系统的演化指明了方向：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>infographic list-grid-badge-card
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>data
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  title OCP 开闭原则核心要义
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  items
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    - label Open for Extension
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      desc 对扩展开放：通过新增模块、类或方法来扩展功能
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>      icon mdi:puzzle-plus
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    - label Closed for Modification
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      desc 对修改封闭：不修改已有的、经过测试的稳定代码
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      icon mdi:lock-check
-</span></code></pre></div>
+<ul>
+<li><strong>Open for Extension (对扩展开放)</strong>：通过新增模块、类或方法来扩展功能。</li>
+<li><strong>Closed for Modification (对修改封闭)</strong>：不修改已有的、经过测试的稳定代码。</li>
+</ul>
 <p>OCP 的精髓在于<strong>隔离变化</strong>。如果每次增加新功能都需要修改核心业务类，那么每次发布都可能引入回归 Bug。理想的状态是：新功能通过新增代码实现，而老代码对此一无所知，却能与其和谐共存。</p>
 <h3 id="ocp_1">OCP 实现方式对比</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>infographic compare-binary-horizontal-simple-fold
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>data
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  title OCP 正确 vs 错误实现
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  items
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    - label ❌ 错误方式
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>      desc 直接修改原有代码，堆砌 if-else 分支，每次需求变更都触碰核心逻辑
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    - label ✅ 正确方式
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      desc 通过接口/抽象类定义契约，新功能通过实现接口扩展，原有代码无需改动
-</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">❌ 错误方式</th>
+<th style="text-align: left;">✅ 正确方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">直接修改原有代码，堆砌 if-else 分支</td>
+<td style="text-align: left;">通过接口/抽象类定义契约</td>
+</tr>
+<tr>
+<td style="text-align: left;">每次需求变更都触碰核心逻辑</td>
+<td style="text-align: left;">新功能通过实现接口扩展，原有代码无需改动</td>
+</tr>
+</tbody>
+</table>
 <p><pre class="mermaid"><code>classDiagram
     direction RL
     note "OCP原则：通过接口隔离变化"
@@ -971,198 +1007,158 @@
         +apply(price)
     }
 
-    OrderService --&gt; DiscountStrategy : 依赖抽象
-    VIPDiscount ..|&gt; DiscountStrategy : 扩展实现
-    HolidayDiscount ..|&gt; DiscountStrategy : 扩展实现</code></pre>
+    OrderService --&gt; DiscountStrategy : "依赖抽象"
+    VIPDiscount ..|&gt; DiscountStrategy : "扩展实现"
+    HolidayDiscount ..|&gt; DiscountStrategy : "扩展实现"</code></pre>
 <em>(图示：通过策略模式扩展功能，符合 OCP 原则)</em></p>
 <h2 id="_1">二、两顶帽子：重构与新功能的节奏</h2>
 <p>在实际开发中，很难一开始就设计出完全符合 OCP 的系统。需求的变更往往出乎意料。这时，Kent Beck 提出的"<strong>两顶帽子</strong>"隐喻就显得至关重要。</p>
 <h3 id="_2">开发过程中，我们永远只戴一顶帽子：</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>infographic list-grid-compact-card
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>data
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  title 两顶帽子开发模式
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  items
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    - label 🎩 重构的帽子
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>      desc 不改变软件可观察行为，只调整内部结构。提取方法、重命名、抽象接口，为新功能铺路。
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>      icon mdi:wrench
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    - label 🧢 新功能的帽子
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>      desc 添加新的用户行为。在重构良好的基础上，新功能实现应顺理成章——添加类、实现接口。
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>      icon mdi:plus-circle
-</span></code></pre></div>
+<ol>
+<li><strong>🎩 重构的帽子</strong>：不改变软件可观察行为，只调整内部结构。提取方法、重命名、抽象接口，为新功能铺路。</li>
+<li><strong>🧢 新功能的帽子</strong>：添加新的用户行为。在重构良好的基础上，新功能实现应顺理成章——添加类、实现接口。</li>
+</ol>
 <p><strong>保持软件不退化的关键，在于绝不混戴这两顶帽子。</strong> 许多开发者试图在添加新功能的同时顺手修改原有结构，导致逻辑混乱，Bug 丛生。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>infographic list-row-simple-horizontal-arrow
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>data
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  title 正确的开发流程
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  items
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    - label 识别变化点
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>      desc 分析新需求影响范围
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    - label 戴上重构帽
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>      desc 调整结构以适应变化
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    - label 切换功能帽
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      desc 扩展实现新功能
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    - label 验证与测试
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      desc 确保行为正确
-</span></code></pre></div>
+<h4 id="_3">正确的开发流程：</h4>
+<ol>
+<li><strong>识别变化点</strong>：分析新需求影响范围。</li>
+<li><strong>戴上重构帽</strong>：调整结构以适应变化。</li>
+<li><strong>切换功能帽</strong>：扩展实现新功能。</li>
+<li><strong>验证与测试</strong>：确保行为正确。</li>
+</ol>
 <h2 id="vs">三、贫血模型 vs. 充血模型：对抗复杂度的战场</h2>
 <p>在 Java 企业级开发（尤其是 Spring 生态）中，我们最熟悉的模式莫过于：<code>Controller</code> → <code>Service</code> → <code>DAO</code> → <code>Database</code>。在这种架构下，实体类（Entity）通常只有字段和 Getter/Setter，不包含任何业务逻辑。这就是典型的<strong>贫血模型（Anemic Domain Model）</strong>。</p>
 <h3 id="1-service">1. 贫血模型的困境：Service 层的膨胀</h3>
 <p>在贫血模型中，所有的业务逻辑都被剥离到了 Service 层。这就导致了一个常见现象：<strong>实体类像是一个无魂的僵尸，只是数据的搬运工；而 Service 层则变成了上帝类（God Class）。</strong></p>
 <p><pre class="mermaid"><code>graph TD
-    subgraph Anemic[贫血模型：Service 包含所有逻辑]
-        C[Controller] --&gt; S[OrderService&lt;br/&gt;(God Class)]
-        S --&gt;|注入| U[UserDAO]
-        S --&gt;|注入| P[ProductDAO]
-        S --&gt;|注入| I[InventoryDAO]
-        S --&gt;|注入| CP[CouponDAO]
-        S -.-&gt;|直接修改数据| O[Order Entity&lt;br/&gt;(仅 Getter/Setter)]
+    subgraph Anemic ["贫血模型：Service 包含所有逻辑"]
+        C[Controller] --&gt; S["OrderService&lt;br/&gt;(God Class)"]
+        S --&gt;|"注入"| U[UserDAO]
+        S --&gt;|"注入"| P[ProductDAO]
+        S --&gt;|"注入"| I[InventoryDAO]
+        S --&gt;|"注入"| CP[CouponDAO]
+        S -.-&gt;|"直接修改数据"| O["Order Entity&lt;br/&gt;(仅 Getter/Setter)"]
     end
     style S fill:#ffcccc,stroke:#333,stroke-width:2px
     style O fill:#f9f9f9,stroke:#999,stroke-dasharray: 5 5</code></pre>
 <em>(图示：Service 层庞大臃肿，Entity 层贫瘠)</em></p>
 <h4 id="dao">场景推演：注入多个 DAO 的噩梦</h4>
 <p>假设我们在做一个电商系统的"下单"功能。在贫血模型下，<code>OrderService</code> 的 <code>createOrder</code> 方法可能会变成这样：</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Service</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">UserDAO</span><span class="w"> </span><span class="n">userDAO</span><span class="p">;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductDAO</span><span class="w"> </span><span class="n">productDAO</span><span class="p">;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">InventoryDAO</span><span class="w"> </span><span class="n">inventoryDAO</span><span class="p">;</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">CouponDAO</span><span class="w"> </span><span class="n">couponDAO</span><span class="p">;</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">PaymentDAO</span><span class="w"> </span><span class="n">paymentDAO</span><span class="p">;</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nd">@Transactional</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">couponId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="c1">// 1. 校验用户状态</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="na">getStatus</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ACTIVE</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(...);</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="c1">// 2. 校验商品并扣减库存</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">productId</span><span class="p">);</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inventoryDAO</span><span class="p">.</span><span class="na">getCount</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(...);</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="n">inventoryDAO</span><span class="p">.</span><span class="na">decrease</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="c1">// 3. 计算优惠</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">Coupon</span><span class="w"> </span><span class="n">coupon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">couponDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">couponId</span><span class="p">);</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="c1">// ... 一大堆计算逻辑 ...</span>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="c1">// 4. 创建订单对象（只是数据载体）</span>
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setUserId</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">finalPrice</span><span class="p">);</span>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="c1">// ... Set 了一堆属性 ...</span>
-</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
-</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="n">orderDAO</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
-</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Service</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">UserDAO</span><span class="w"> </span><span class="n">userDAO</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductDAO</span><span class="w"> </span><span class="n">productDAO</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">InventoryDAO</span><span class="w"> </span><span class="n">inventoryDAO</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">CouponDAO</span><span class="w"> </span><span class="n">couponDAO</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">PaymentDAO</span><span class="w"> </span><span class="n">paymentDAO</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nd">@Transactional</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">couponId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="c1">// 1. 校验用户状态</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="na">getStatus</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ACTIVE</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(...);</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="c1">// 2. 校验商品并扣减库存</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">productId</span><span class="p">);</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inventoryDAO</span><span class="p">.</span><span class="na">getCount</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(...);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="n">inventoryDAO</span><span class="p">.</span><span class="na">decrease</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="c1">// 3. 计算优惠</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">Coupon</span><span class="w"> </span><span class="n">coupon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">couponDAO</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">couponId</span><span class="p">);</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="c1">// ... 一大堆计算逻辑 ...</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="c1">// 4. 创建订单对象（只是数据载体）</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setUserId</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">finalPrice</span><span class="p">);</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="c1">// ... Set 了一堆属性 ...</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="n">orderDAO</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><strong>这种代码的问题在哪里？</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>infographic list-grid-badge-card
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>data
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  title 贫血模型的四宗罪
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  items
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    - label 违背 OCP
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>      desc 任何逻辑变更都需修改 OrderService，系统极不稳定
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>      icon mdi:alert-circle
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    - label 破坏封装
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>      desc 数据与行为分离，任何 Service 都可随意修改 Entity
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>      icon mdi:shield-off
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    - label 依赖地狱
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>      desc Service 注入大量 DAO，处理本不该关心的细节
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>      icon mdi:spider-web
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    - label 面向过程
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>      desc 本质是披着 OOP 外衣的 Procedural Code
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>      icon mdi:function
-</span></code></pre></div>
+<ul>
+<li><strong>违背 OCP</strong>：任何逻辑变更都需修改 OrderService，系统极不稳定。</li>
+<li><strong>破坏封装</strong>：数据与行为分离，任何 Service 都可随意修改 Entity。</li>
+<li><strong>依赖地狱</strong>：Service 注入大量 DAO，处理本不该关心的细节。</li>
+<li><strong>面向过程</strong>：本质是披着 OOP 外衣的 Procedural Code。</li>
+</ul>
 <h3 id="2">2. 充血模型：回归真实世界的建模</h3>
 <p><strong>充血模型（Rich Domain Model）</strong> 也就是<strong>领域驱动设计（DDD）</strong> 所提倡的模式。其核心理念是：<strong>数据和行为应该在一起</strong>。对象不仅有属性（State），更有行为（Behavior）。</p>
 <p><pre class="mermaid"><code>graph TD
-    subgraph Rich[充血模型：行为归还给对象]
-        App[Application Service&lt;br/&gt;(协调/防腐/事务)] --&gt;|委托业务| O[Order 聚合根&lt;br/&gt;(状态 + 核心行为)]
-        O --&gt;|内部维护| I[OrderItem]
-        O -.-&gt;|调用领域能力| C[Coupon 实体]
-        App --&gt;|仅负责持久化| R[OrderRepository]
+    subgraph Rich ["充血模型：行为归还给对象"]
+        App["Application Service&lt;br/&gt;(协调/防腐/事务)"] --&gt;|"委托业务"| O["Order 聚合根&lt;br/&gt;(状态 + 核心行为)"]
+        O --&gt;|"内部维护"| I[OrderItem]
+        O -.-&gt;|"调用领域能力"| C["Coupon 实体"]
+        App --&gt;|"仅负责持久化"| R[OrderRepository]
     end
     style O fill:#ccffcc,stroke:#333,stroke-width:2px
     style App fill:#e6f3ff,stroke:#333</code></pre>
 <em>(图示：逻辑分布在各个 Entity 中，Service 层变薄且作为协调者)</em></p>
-<h4 id="_3">重构后的下单逻辑</h4>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Order 聚合根：包含了订单相关的核心逻辑</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">totalAmount</span><span class="p">;</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderStatus</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1">// 行为：添加商品</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="c1">// 订单自己知道如何添加商品，如何计算小计</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">items</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">));</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="n">recalculateTotal</span><span class="p">();</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="c1">// 行为：应用优惠券</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">applyCoupon</span><span class="p">(</span><span class="n">Coupon</span><span class="w"> </span><span class="n">coupon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">coupon</span><span class="p">.</span><span class="na">isValid</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DomainException</span><span class="p">(</span><span class="s">&quot;无效优惠券&quot;</span><span class="p">);</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="c1">// 订单自己计算折后价格</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">totalAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coupon</span><span class="p">.</span><span class="na">calculateDiscount</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">totalAmount</span><span class="p">);</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="c1">// 行为：支付</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CREATED</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StateException</span><span class="p">(</span><span class="s">&quot;状态不对&quot;</span><span class="p">);</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PAID</span><span class="p">;</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="p">}</span>
+<h4 id="_4">重构后的下单逻辑</h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Order 聚合根：包含了订单相关的核心逻辑</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">totalAmount</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderStatus</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="c1">// 行为：添加商品</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="c1">// 订单自己知道如何添加商品，如何计算小计</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">items</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">));</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">recalculateTotal</span><span class="p">();</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="c1">// 行为：应用优惠券</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">applyCoupon</span><span class="p">(</span><span class="n">Coupon</span><span class="w"> </span><span class="n">coupon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">coupon</span><span class="p">.</span><span class="na">isValid</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DomainException</span><span class="p">(</span><span class="s">&quot;无效优惠券&quot;</span><span class="p">);</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="c1">// 订单自己计算折后价格</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">totalAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coupon</span><span class="p">.</span><span class="na">calculateDiscount</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">totalAmount</span><span class="p">);</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="c1">// 行为：支付</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CREATED</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StateException</span><span class="p">(</span><span class="s">&quot;状态不对&quot;</span><span class="p">);</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PAID</span><span class="p">;</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>此时的 Service 层会变得非常薄：</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@Service</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderApplicationService</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nd">@Transactional</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">placeOrder</span><span class="p">(</span><span class="n">PlaceOrderCommand</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="c1">// 1. 准备数据</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="na">getProductId</span><span class="p">());</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="c1">// 2. 业务行为委托给领域对象</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">addProduct</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="na">getCount</span><span class="p">());</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="c1">// 3. 持久化</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="p">}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@Service</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderApplicationService</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nd">@Autowired</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nd">@Transactional</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">placeOrder</span><span class="p">(</span><span class="n">PlaceOrderCommand</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="c1">// 1. 准备数据</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="na">getProductId</span><span class="p">());</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="c1">// 2. 业务行为委托给领域对象</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">addProduct</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="na">getCount</span><span class="p">());</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="c1">// 3. 持久化</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><strong>充血模型的优势：</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>infographic list-grid-badge-card
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>data
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  title 充血模型的四大优势
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  items
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    - label 符合真实世界
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>      desc 对象即现实，订单包含与之相关的规则约束
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>      icon mdi:earth
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    - label 高内聚
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>      desc 库存归 Inventory，优惠归 Coupon，职责清晰
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>      icon mdi:target
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    - label 可测试性
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>      desc 直接对领域对象编写单元测试，无需 Spring 容器
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>      icon mdi:test-tube
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    - label 消除依赖地狱
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>      desc Service 不再注入大量 DAO，通过聚合根协作
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>      icon mdi:check-decagram
-</span></code></pre></div>
-<h2 id="_4">四、总结：让代码讲述业务故事</h2>
+<ul>
+<li><strong>符合真实世界</strong>：对象即现实，订单包含与之相关的规则约束。</li>
+<li><strong>高内聚</strong>：库存归 Inventory，优惠归 Coupon，职责清晰。</li>
+<li><strong>可测试性</strong>：直接对领域对象编写单元测试，无需 Spring 容器。</li>
+<li><strong>消除依赖地狱</strong>：Service 不再注入大量 DAO，通过聚合根协作。</li>
+</ul>
+<h2 id="_5">四、总结：让代码讲述业务故事</h2>
 <p>软件退化往往始于对业务逻辑的轻视。当我们习惯于将所有逻辑一股脑塞进 Service 方法，通过注入无数个 DAO 来拼凑功能时，我们实际上是在放弃面向对象的优势，退回到了面向过程的时代。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>infographic sequence-steps-simple
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>data
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  title 防止软件退化的三板斧
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  items
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    - label 时刻重构
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>      desc 戴好重构帽，添加新功能前先清理战场
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    - label 拥抱 OCP
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>      desc 用扩展代替修改，隔离变化点
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    - label 回归对象
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>      desc 采用充血模型，让 Entity 承载业务逻辑
-</span></code></pre></div>
+<h4 id="_6">防止软件退化的三板斧：</h4>
+<ol>
+<li><strong>时刻重构</strong>：戴好重构帽，添加新功能前先清理战场。</li>
+<li><strong>拥抱 OCP</strong>：用扩展代替修改，隔离变化点。</li>
+<li><strong>回归对象</strong>：采用充血模型，让 Entity 承载业务逻辑。</li>
+</ol>
 <p>当你的代码能够清晰地表达真实世界的业务规则，而不是充满了数据库操作的细节时，软件的生命力自然得以延续。这不仅是技术的选择，更是对业务复杂度的尊重。</p>
 <hr />
 <blockquote>
