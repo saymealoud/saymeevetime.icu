@@ -3,11 +3,11 @@ title: 杜绝软件退化：从开放-封闭原则到领域驱动设计的演进
 date: 2026-01-11
 categories:
   - tech
-  - Architecture
 tags:
   - OCP
   - Refactoring
   - DDD
+  - Architecture
 ---
 
 # 杜绝软件退化：从开放-封闭原则到领域驱动设计的演进
